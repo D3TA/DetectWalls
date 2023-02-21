@@ -1,0 +1,20 @@
+local v2 = RaycastParams.new();
+v2.FilterDescendantsInstances = { script.Parent };
+local detect = {};
+function detect.DetectWalls(l__HumanoidRootPart__1, l__Humanoid__2)
+	local v3 = workspace:Raycast(l__HumanoidRootPart__1.Position + l__HumanoidRootPart__1.CFrame.RightVector * 1 + l__HumanoidRootPart__1.CFrame.LookVector * 1, l__HumanoidRootPart__1.CFrame.LookVector * 4, v2);
+	local v4 = workspace:Raycast(l__HumanoidRootPart__1.Position + l__HumanoidRootPart__1.CFrame.RightVector * -1 + l__HumanoidRootPart__1.CFrame.LookVector * 1, l__HumanoidRootPart__1.CFrame.LookVector * 4, v2);
+	if v3 and v4 then
+		return;
+	end;
+	if v3 then
+		l__Humanoid__2:MoveTo(l__HumanoidRootPart__1.Position + l__HumanoidRootPart__1.CFrame.RightVector * -2);
+		l__Humanoid__2.MoveToFinished:Wait();
+		return;
+	end;
+	if v4 then
+		l__Humanoid__2:MoveTo(l__HumanoidRootPart__1.Position + l__HumanoidRootPart__1.CFrame.RightVector * 2);
+		l__Humanoid__2.MoveToFinished:Wait();
+	end;
+end;
+return detect;
